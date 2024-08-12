@@ -566,6 +566,7 @@ h6 {
   opacity: 1;
   bottom: 15px;
   border: 1px solid #fff;
+  right: 22px;
 }
 
 /*--------------------------------------------------------------
@@ -1745,4 +1746,45 @@ section,
 --------------------------------------------------------------*/
 .starter-section {
   /* Add your styles here */
+}
+
+/*--------------------------------------------------------------
+# Floating Whatsapp Button
+--------------------------------------------------------------*/
+
+#whatsapp-icon {
+  display: inline-block !important;
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 90px;
+  background-color: #25d366;
+  color: #FFF;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 30px;
+  box-shadow: 2px 2px 3px #999;
+  z-index: 100;
+  right: 15px;
+  box-shadow: 0 0 0 0 #42db87;
+  -webkit-animation: pulsing 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+  -moz-animation: pulsing 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+  -ms-animation: pulsing 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+  animation: pulsing 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+  font-weight: normal;
+  font-family: sans-serif;
+  text-decoration: none !important;
+  transition: transform 0.2s ease; /* Added transition for smoother movement */
+}
+
+@keyframes pulsing {
+    to {
+        box-shadow: 0 0 0 30px rgba(232, 76, 61, 0);
+    }
+}
+
+.my-float {
+  margin-top: 8px !important;
+  color: #fff;
+  display: inline-block;
 }

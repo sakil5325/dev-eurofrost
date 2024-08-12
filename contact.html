@@ -5,8 +5,8 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Contact | Eurofrost Holdings</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+  <meta content="Get in touch with us for inquiries, orders, or any assistance related to our products. Find our contact address, phone number, email, business hours, and a convenient form to submit your queries directly." name="description">
+  <meta content="contact us, contact address, phone number, email, business hours, inquiry form, customer support, export company, get in touch" name="keywords">
 
   <!-- Favicons -->
   <link href="assets/img/favicon-32x32.png" rel="icon">
@@ -148,6 +148,36 @@
 
         </div>
 
+        <form id="myForm" class="php-email-form" data-aos="fade-up" data-aos-delay="600">
+          <div class="row gy-4">
+  
+            <div class="col-md-6">
+              <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
+            </div>
+  
+            <div class="col-md-6 ">
+              <input type="email" class="form-control" name="email" placeholder="Your Email" required="">
+            </div>
+  
+            <div class="col-md-12">
+              <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
+            </div>
+  
+            <div class="col-md-12">
+              <textarea class="form-control" name="message" rows="6" placeholder="Message" required=""></textarea>
+            </div>
+  
+            <div class="col-md-12 text-center">
+              <div class="loading">Loading</div>
+              <div class="error-message"></div>
+              <div class="sent-message">Your message has been sent. Thank you!</div>
+  
+              <button type="submit">Send Message</button>
+            </div>
+  
+          </div>
+        </form><!-- End Contact Form -->
+
       </div>
 
     </section><!-- /Contact Section -->
@@ -201,13 +231,18 @@
     </div>
 
     <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">Eurofrost Holdings</strong> <span>All Rights Reserved</span></p>
+      <p>© <span>Copyright 2024</span> <strong class="px-1 sitename">Eurofrost Holdings</strong> <span>All Rights Reserved</span></p>
       <div class="credits">
-        Designed by <a target="_blank" title="Opens in a new window" href="https://techterminus.in/">TechTerminus</a>
+        Website Designed and Developed by <a target="_blank" title="Opens in a new window" href="https://techterminus.in/">TechTerminus IT Solutions</a>
       </div>
     </div>
 
   </footer>
+
+  <!-- Whatsapp message button -->
+  <a id="whatsapp-icon" class="whats-app draggable" href="https://api.whatsapp.com/send?phone=+919898565764&amp;text=Hello Eurofrost, i'm interested in your products. Please assist me how i can order." target="_blank">
+      <i class="bi bi-whatsapp my-float"></i>
+  </a>
 
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
@@ -216,8 +251,9 @@
   <div id="preloader"></div>
 
   <!-- Vendor JS Files -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <!-- <script src="assets/vendor/php-email-form/validate.js"></script> -->
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
@@ -225,6 +261,57 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+
+  </script>
+  <!-- <script type="text/javascript">
+    (function(){
+      emailjs.init("6D-nPTTpN7k11PTFPSlLq");
+    })();
+    
+    function sendEmail(e) {
+      e.preventDefault();
+      
+      emailjs.sendForm('service_49ht2ai', 'template_7nwsuxo', e.target)
+        .then((result) => {
+          alert('Email sent successfully!');
+        }, (error) => {
+          alert('Failed to send email.');
+        });
+    }
+  </script> -->
+
+  <script>
+    (function(){
+      emailjs.init({
+        publicKey: "UEEAitIXiulTLZPgE",
+      });
+    })();
+    $('#myForm').on('submit', function(event) {
+      var thisForm = this
+    event.preventDefault(); // prevent reload
+    
+    var formData = new FormData(this);
+    formData.append('service_id', 'service_1bz83hk');
+    formData.append('template_id', 'template_7nwsuxo');
+    formData.append('user_id', 'UEEAitIXiulTLZPgE');
+ 
+    $.ajax('https://api.emailjs.com/api/v1.0/email/send-form', {
+        type: 'POST',
+        data: formData,
+        contentType: false, // auto-detection
+        processData: false // no need to parse formData to string
+    }).done(function() {
+      thisForm.querySelector('.sent-message').classList.add('d-block');
+        thisForm.reset();
+        setTimeout(() => {
+          thisForm.querySelector('.sent-message').classList.remove('d-block');
+        }, 3000);
+    }).fail(function(error) {
+        alert('Oops... ' + JSON.stringify(error));
+    });
+});
+  </script>
 
 </body>
 
